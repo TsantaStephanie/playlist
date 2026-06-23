@@ -1,0 +1,27 @@
+watch:
+  directory: "C:/Musique/entrant"
+  interval_seconds: 600        # scan toutes les 10 minutes
+  error_directory: "C:/Musique/erreurs"
+
+database:
+  host: "localhost"
+  port: 5433
+  name: "playlist_db"
+  user: "postgres"
+  password: "etu003146"
+
+queues:
+  queue_1: "queue_mp3_paths"   # P1 → P2
+  queue_2: "queue_mp3_meta"    # P2 → P3
+  poll_interval_seconds: 2
+
+api:
+  url: "http://localhost:8000/api/mp3"
+  timeout_seconds: 30
+  max_retries: 3
+
+on_send_failure: "move"        # "move" | "keep"
+
+logs:
+  file: "app.log"
+  level: "INFO"

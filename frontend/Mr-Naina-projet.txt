@@ -1,0 +1,336 @@
+Projet "Mr Naina" – Spécifications fonctionnelles et techniques
+
+================================================================================
+1. CONTEXTE GÉNÉRAL
+================================================================================
+
+Le projet vise à développer une solution complète de gestion de fichiers MP3,
+composée d'une application desktop (ou console) et d'une application web.
+
+L'objectif principal est de permettre :
+- La collecte automatique de fichiers MP3
+- L'extraction de leurs métadonnées
+- L'envoi vers une API
+- La génération de playlists intelligentes selon des critères définis par l'utilisateur
+
+================================================================================
+2. ARCHITECTURE GLOBALE
+================================================================================
+
+2.1 Composants
+
+Partie Desktop (standalone, sans interface graphique obligatoire) :
+  - Programme 1 : Surveillance de répertoire
+  - Programme 2 : Extraction des métadonnées
+  - Programme 3 : Envoi vers l'API
+  - Programme 4 (facultatif) : Nettoyage des fichiers
+
+Partie Web :
+  - Backend (API REST)
+  - Frontend (interface utilisateur)
+
+2.2 Communication entre programmes
+
+- Utilisation de RabbitMQ comme courtier de messages (message broker)
+- Communication asynchrone et découplée
+- Chaque programme produit et/ou consomme des messages via des files d'attente distinctes
+
+Schéma de flux :
+  P1 (surveillance) → Queue 1 → P2 (extraction) → Queue 2 → P3 (envoi API)
+                                                                      ↓
+                                                                   API Web
+
+================================================================================
+3. PARTIE DESKTOP (PROGRAMMES EN CONSOLE)
+================================================================================
+
+3.1 Programme 1 – Surveillance de répertoire
+
+Rôle :
+  - Surveiller un répertoire source configurable (ex. : ~/Musique/entrant)
+
+Fréquence :
+  - Paramétrable (ex. : toutes les 10 minutes)
+
+Action :
+  - Détecter les nouveaux fichiers MP3 copiés dans le répertoire
+  - Ignorer les fichiers qui ne sont pas au format MP3
+
+Sortie :
+  - Produire un message contenant le chemin complet vers le fichier
+  - Envoyer dans une file d'attente RabbitMQ (Queue 1)
+
+Logs :
+  - Enregistrer chaque détection avec horodatage
+  - Exemple : "2026-06-17 10:00:00 - Détection : /home/user/Musique/entrant/song.mp3"
+
+3.2 Programme 2 – Extraction des métadonnées
+
+Rôle :
+  - Consommer les messages de la Queue 1 (chemins de fichiers)
+
+Action :
+  - Pour chaque fichier MP3 reçu, extraire toutes les métadonnées disponibles
+  - Métadonnées ID3 : titre, artiste, album, genre, année, durée, piste, etc.
+  - Utiliser une bibliothèque dédiée (ex. mutagen, eyeD3)
+
+Sortie :
+  - Produire un nouveau message contenant :
+    - Le chemin du fichier
+    - Toutes les métadonnées associées (format JSON)
+  - Envoyer dans une nouvelle file (Queue 2)
+
+Logs :
+  - Horodater le début et la fin de l'extraction pour chaque fichier
+  - Indiquer succès ou échec
+  - Exemple : "2026-06-17 10:05:00 - Extraction début : song.mp3"
+            "2026-06-17 10:05:03 - Extraction fin : song.mp3 (succès)"
+
+3.3 Programme 3 – Envoi vers l'API
+
+Rôle :
+  - Consommer les messages de la Queue 2 (fichier + métadonnées)
+
+Action :
+  - Envoyer les données via une requête HTTP (POST) vers l'API web
+  - Corps de la requête : JSON contenant chemin et métadonnées
+
+Comportement en cas de succès :
+  - Supprimer le fichier source du répertoire d'origine
+
+Comportement en cas d'échec :
+  - Déplacer le fichier vers un répertoire d'erreur (ex. ~/erreurs)
+  - OU le laisser en place (selon politique configurable)
+  - Ne PAS supprimer le fichier
+
+Logs :
+  - Enregistrer le début, le statut (succès/échec) et la fin de chaque envoi 
+  - Exemple : "2026-06-17 10:10:00 - Envoi début : song.mp3 vers API"
+            "2026-06-17 10:10:02 - Envoi fin : song.mp3 (succès) - fichier supprimé"
+
+3.4 Programme 4 – Nettoyage (facultatif)
+
+Rôle :
+  - Supprimer les fichiers restants dans un répertoire donné
+
+Action :
+  - Suppression simple, configurable selon les besoins
+  - Peut être exécuté périodiquement ou à la demande
+
+3.5 Fichier de logs commun
+
+- Un fichier central (app.log) regroupe toutes les actions des programmes
+- Format structuré : [DATE] [HEURE] [PROGRAMME] [NIVEAU] Message
+- Niveaux : INFO, WARNING, ERROR
+
+Exemple de logs :
+  [2026-06-17] [10:00:00] [P1] [INFO] Détection : /home/user/Musique/entrant/song1.mp3
+  [2026-06-17] [10:00:00] [P1] [INFO] Détection : /home/user/Musique/entrant/song2.mp3
+  [2026-06-17] [10:05:00] [P2] [INFO] Extraction début : song1.mp3
+  [2026-06-17] [10:05:03] [P2] [INFO] Extraction fin : song1.mp3 (succès)
+  [2026-06-17] [10:05:03] [P2] [ERROR] Extraction échouée : song2.mp3 - Fichier corrompu
+  [2026-06-17] [10:10:00] [P3] [INFO] Envoi début : song1.mp3 vers API
+  [2026-06-17] [10:10:02] [P3] [INFO] Envoi fin : song1.mp3 (succès)
+
+================================================================================
+4. APPLICATION WEB
+================================================================================
+
+4.1 API Backend
+
+Fonctionnalités :
+  - Recevoir les fichiers MP3 et leurs métadonnées via l'API (Programme 3)
+  - Stocker les métadonnées dans une base de données légère
+  - Stockage : uniquement les métadonnées et les chemins d'accès (pas les fichiers eux-mêmes)
+  - Exposer des endpoints REST pour :
+    - CRUD des métadonnées (ajout, modification, suppression, consultation)
+    - Génération de playlists
+    - Téléchargement de playlists
+
+Endpoints suggérés :
+  - POST /api/mp3 - Ajouter un MP3 (reçu du P3)
+  - GET /api/mp3 - Lister tous les MP3
+  - GET /api/mp3/{id} - Obtenir les détails d'un MP3
+  - PUT /api/mp3/{id} - Modifier les métadonnées
+  - DELETE /api/mp3/{id} - Supprimer un MP3
+  - POST /api/playlist/generate - Générer une playlist selon critères
+  - GET /api/playlist/{id} - Obtenir une playlist
+  - POST /api/playlist/{id}/download - Télécharger la playlist en ZIP
+
+Base de données :
+  - SQLite (recommandé pour sa légèreté) ou PostgreSQL
+  - Table "mp3" : id, chemin, titre, artiste, album, genre, année, durée, langue, etc.
+  - Table "playlist" : id, nom, critères, date_creation
+  - Table "playlist_item" : id_playlist, id_mp3, position
+
+4.2 Frontend
+
+Interface utilisateur avec les fonctionnalités suivantes :
+
+Visualisation :
+  - Liste des MP3 disponibles avec leurs métadonnées
+  - Filtres et recherche par titre, artiste, genre, etc.
+
+Création de playlists :
+  - Saisie des critères :
+    - Durée totale souhaitée (ex. 35 minutes)
+    - Filtres optionnels : genre, artiste, langue, année, etc.
+    - Exclusions (ex. : "pas de rock", "pas d'ambondro")
+  - Lancement de la génération
+  - Affichage des playlists proposées
+
+Gestion des playlists :
+  - Sauvegarde d'une playlist avec un nom défini par l'utilisateur
+  - Modification manuelle (ajout/suppression de morceaux)
+  - Visualisation de la durée totale et du nombre de morceaux
+
+Lecture :
+  - Lecteur web intégré pour écouter les playlists (HTML5 audio)
+
+Téléchargement :
+  - Téléchargement de la playlist au format ZIP
+  - Le ZIP contient les fichiers MP3 copiés depuis leur emplacement d'origine
+
+================================================================================
+5. GÉNÉRATEUR DE PLAYLISTS (ALGORITHME)
+================================================================================
+
+5.1 Fonctionnalité principale
+
+L'utilisateur saisit des critères :
+  - Durée totale souhaitée (ex. 35 minutes) - champ obligatoire
+  - Filtres optionnels : genre, artiste, langue, année, etc.
+  - Exclusions : "pas de rock", "ne pas inclure X", etc.
+
+L'algorithme doit proposer une ou plusieurs playlists respectant :
+  - La durée totale (au plus proche possible)
+  - Les filtres et exclusions
+
+5.2 Algorithme de proposition
+
+Étape 1 : Filtrer les morceaux selon les critères de l'utilisateur
+Étape 2 : Trouver une combinaison dont la somme des durées se rapproche de la durée cible
+Étape 3 : Si plusieurs combinaisons existent, proposer les meilleures (ex. top 3)
+
+Approche possible :
+  - Problème du sac à dos (knapsack) avec les durées comme poids et valeurs
+  - Heuristique simple si trop de morceaux : glouton + optimisation locale
+
+5.3 Personnalisation
+
+- L'utilisateur peut modifier manuellement la playlist après génération
+- Les modifications peuvent faire dépasser la durée initiale (pas de blocage)
+- La playlist modifiée peut être resauvegardée
+
+5.4 Exemple
+
+Critères saisis :
+  - Durée : 35 minutes
+  - Genre : malagasy
+  - Exclusion : rock
+
+Résultat attendu :
+  - Proposition de plusieurs combinaisons de chansons malgaches
+  - Durée totale proche de 35 minutes (± 2 minutes)
+  - Aucune chanson de genre rock
+
+================================================================================
+6. TECHNOLOGIES SUGGÉRÉES
+================================================================================
+
+6.1 Backend Web
+  - Framework : Laravel (PHP), Django (Python) ou Express (Node.js)
+  - Base de données : SQLite ou PostgreSQL
+  - API REST
+
+6.2 Frontend Web
+  - React.js / Vue.js / Svelte
+  - Alternative : HTML/CSS/JS avec Alpine.js (pour simplicité)
+  - Lecteur audio : HTML5 Audio API
+
+6.3 Desktop (programmes console)
+  - Langage : Python (recommandé)
+    - mutagen : extraction des métadonnées MP3
+    - pika : client RabbitMQ
+    - requests : appels HTTP vers l'API
+  - Alternative : Node.js ou C# (.NET Core)
+
+6.4 Communication
+  - RabbitMQ (message broker)
+  - Bibliothèque client adaptée au langage choisi
+  - Files d'attente distinctes :
+    - queue_1 : P1 → P2 (chemins de fichiers)
+    - queue_2 : P2 → P3 (fichier + métadonnées)
+
+================================================================================
+7. LOGS ET GESTION D'ERREURS
+================================================================================
+
+7.1 Logs
+  - Un fichier de log unique (app.log)
+  - Format structuré et lisible
+  - Inclut : date, heure, programme, niveau, message
+
+7.2 Gestion d'erreurs
+  - Toute exception est consignée dans les logs
+  - Les erreurs d'extraction (P2) :
+    - Le fichier est signalé comme corrompu
+    - Il n'est pas envoyé à P3
+  - Les erreurs d'envoi (P3) :
+    - Le fichier n'est pas supprimé
+    - Tentative de repli : déplacement vers répertoire d'erreur
+    - Possibilité de re-tentative configurable (nombre de tentatives)
+  - Les erreurs ne doivent pas bloquer le traitement des autres fichiers
+
+================================================================================
+8. EXIGENCES SUPPLÉMENTAIRES
+================================================================================
+
+8.1 Configuration
+  - Le système doit être configurable via un fichier de configuration
+  - Paramètres : chemins des répertoires, fréquences, files RabbitMQ, URL API, etc.
+  - Format : JSON, YAML ou .env
+
+8.2 Exécution
+  - La partie desktop doit pouvoir tourner en arrière-plan (service/démon)
+  - Sur Windows : service Windows
+  - Sur Linux : systemd ou cron
+
+8.3 Sécurité (bonus)
+  - Authentification sur l'API si exposée publiquement
+  - Validation des fichiers MP3 avant traitement
+
+8.4 Performance
+  - Traitement parallèle possible (plusieurs workers par programme)
+  - Gestion des fichiers volumineux sans bloquer le système
+
+================================================================================
+9. LIVRABLES ATTENDUS
+================================================================================
+
+- Code source complet des programmes desktop (P1, P2, P3, P4)
+- Code source complet de l'application web (backend + frontend)
+- Fichier de configuration d'exemple
+- Fichier de logs d'exemple
+- Documentation technique :
+  - Installation et configuration
+  - Utilisation
+  - Architecture et dépendances
+- Schéma d'architecture (optionnel mais recommandé)
+- Script de déploiement (optionnel)
+
+================================================================================
+10. CONTRAINTES ET SPÉCIFICITÉS
+================================================================================
+
+- Pas de base de données pour la partie desktop (uniquement les logs)
+- Pas d'interface graphique pour la partie desktop (programmes console/terminal)
+- Les fichiers MP3 sont supprimés UNIQUEMENT après extraction ET envoi réussi
+- Les playlists sont générées à partir des métadonnées en base (pas des fichiers eux-mêmes)
+- Le téléchargement de playlist ZIP utilise les chemins des fichiers stockés en base
+- Communication asynchrone obligatoire entre P1, P2 et P3 via RabbitMQ
+- Tous les événements sont traçables via les logs
+
+================================================================================
+FIN DU DOCUMENT
+================================================================================
