@@ -1,0 +1,239 @@
+[2026-06-24 08:20:34] [P1] [INFO] Surveillance démarrée : C:\Musique\entrant
+[2026-06-24 08:22:18] [P2] [INFO] P2 en attente sur queue_mp3_paths…
+[2026-06-24 08:22:41] [P3] [INFO] P3 en attente sur queue_mp3_meta…
+[2026-06-24 08:22:58] [P4] [INFO] Aucun fichier MP3 dans C:\Musique\entrant
+[2026-06-24 08:28:46] [P1] [INFO] Arrêt de la surveillance (KeyboardInterrupt)
+[2026-06-24 08:29:00] [P2] [INFO] P2 en attente sur queue_mp3_paths…
+[2026-06-24 08:29:00] [P1] [INFO] Surveillance démarrée : C:\Musique\entrant
+[2026-06-24 08:29:00] [P3] [INFO] P3 en attente sur queue_mp3_meta…
+[2026-06-24 08:33:31] [P1] [INFO] Détection : C:\Musique\entrant\song1.mp3
+[2026-06-24 08:33:31] [P1] [INFO] Publié dans queue_mp3_paths : song1.mp3
+[2026-06-24 08:33:31] [P1] [INFO] Détection : C:\Musique\entrant\song2.mp3
+[2026-06-24 08:33:32] [P1] [INFO] Publié dans queue_mp3_paths : song2.mp3
+[2026-06-24 08:33:32] [P1] [INFO] Détection : C:\Musique\entrant\song3.mp3
+[2026-06-24 08:33:32] [P1] [INFO] Publié dans queue_mp3_paths : song3.mp3
+[2026-06-24 08:33:32] [P1] [INFO] Détection : C:\Musique\entrant\song4.mp3
+[2026-06-24 08:33:32] [P1] [INFO] Publié dans queue_mp3_paths : song4.mp3
+[2026-06-24 08:33:33] [P2] [INFO] Extraction début : song1.mp3
+[2026-06-24 08:33:33] [P2] [INFO] Extraction fin : song1.mp3 (succès)
+[2026-06-24 08:33:33] [P2] [INFO] Extraction début : song2.mp3
+[2026-06-24 08:33:33] [P2] [INFO] Extraction fin : song2.mp3 (succès)
+[2026-06-24 08:33:33] [P2] [INFO] Extraction début : song3.mp3
+[2026-06-24 08:33:33] [P2] [INFO] Extraction fin : song3.mp3 (succès)
+[2026-06-24 08:33:33] [P2] [INFO] Extraction début : song4.mp3
+[2026-06-24 08:33:34] [P2] [INFO] Extraction fin : song4.mp3 (succès)
+[2026-06-24 08:33:35] [P3] [INFO] Envoi début : song1.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:33:37] [P3] [INFO] Envoi fin : song1.mp3 (succès) — fichier supprimé
+[2026-06-24 08:33:37] [P3] [INFO] Envoi début : song2.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:33:39] [P3] [INFO] Envoi fin : song2.mp3 (succès) — fichier supprimé
+[2026-06-24 08:33:39] [P3] [INFO] Envoi début : song3.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:33:41] [P3] [INFO] Envoi fin : song3.mp3 (succès) — fichier supprimé
+[2026-06-24 08:33:41] [P3] [INFO] Envoi début : song4.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:33:43] [P3] [INFO] Envoi fin : song4.mp3 (succès) — fichier supprimé
+[2026-06-24 08:34:14] [P1] [INFO] Détection : C:\Musique\entrant\song1.mp3
+[2026-06-24 08:34:15] [P1] [INFO] Publié dans queue_mp3_paths : song1.mp3
+[2026-06-24 08:34:15] [P1] [INFO] Détection : C:\Musique\entrant\song2.mp3
+[2026-06-24 08:34:15] [P1] [INFO] Publié dans queue_mp3_paths : song2.mp3
+[2026-06-24 08:34:15] [P1] [INFO] Détection : C:\Musique\entrant\song3.mp3
+[2026-06-24 08:34:15] [P1] [INFO] Publié dans queue_mp3_paths : song3.mp3
+[2026-06-24 08:34:15] [P1] [INFO] Détection : C:\Musique\entrant\song4.mp3
+[2026-06-24 08:34:15] [P2] [INFO] Extraction début : song1.mp3
+[2026-06-24 08:34:15] [P1] [INFO] Publié dans queue_mp3_paths : song4.mp3
+[2026-06-24 08:34:15] [P2] [INFO] Extraction fin : song1.mp3 (succès)
+[2026-06-24 08:34:15] [P2] [INFO] Extraction début : song2.mp3
+[2026-06-24 08:34:15] [P2] [INFO] Extraction fin : song2.mp3 (succès)
+[2026-06-24 08:34:15] [P2] [INFO] Extraction début : song3.mp3
+[2026-06-24 08:34:15] [P2] [INFO] Extraction fin : song3.mp3 (succès)
+[2026-06-24 08:34:15] [P2] [INFO] Extraction début : song4.mp3
+[2026-06-24 08:34:16] [P2] [INFO] Extraction fin : song4.mp3 (succès)
+[2026-06-24 08:34:16] [P3] [INFO] Envoi début : song1.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:34:18] [P3] [INFO] Envoi fin : song1.mp3 (succès) — fichier supprimé
+[2026-06-24 08:34:19] [P3] [INFO] Envoi début : song2.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:34:21] [P3] [INFO] Envoi fin : song2.mp3 (succès) — fichier supprimé
+[2026-06-24 08:34:21] [P3] [INFO] Envoi début : song3.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:34:23] [P3] [INFO] Envoi fin : song3.mp3 (succès) — fichier supprimé
+[2026-06-24 08:34:23] [P3] [INFO] Envoi début : song4.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:34:25] [P3] [INFO] Envoi fin : song4.mp3 (succès) — fichier supprimé
+[2026-06-24 08:34:29] [P1] [INFO] Détection : C:\Musique\entrant\song1.mp3
+[2026-06-24 08:34:29] [P1] [INFO] Publié dans queue_mp3_paths : song1.mp3
+[2026-06-24 08:34:29] [P1] [INFO] Détection : C:\Musique\entrant\song2.mp3
+[2026-06-24 08:34:29] [P1] [INFO] Publié dans queue_mp3_paths : song2.mp3
+[2026-06-24 08:34:29] [P1] [INFO] Détection : C:\Musique\entrant\song3.mp3
+[2026-06-24 08:34:30] [P1] [INFO] Publié dans queue_mp3_paths : song3.mp3
+[2026-06-24 08:34:30] [P1] [INFO] Détection : C:\Musique\entrant\song4.mp3
+[2026-06-24 08:34:30] [P1] [INFO] Publié dans queue_mp3_paths : song4.mp3
+[2026-06-24 08:34:30] [P2] [INFO] Extraction début : song1.mp3
+[2026-06-24 08:34:30] [P2] [INFO] Extraction fin : song1.mp3 (succès)
+[2026-06-24 08:34:30] [P2] [INFO] Extraction début : song2.mp3
+[2026-06-24 08:34:30] [P2] [INFO] Extraction fin : song2.mp3 (succès)
+[2026-06-24 08:34:31] [P2] [INFO] Extraction début : song3.mp3
+[2026-06-24 08:34:31] [P2] [INFO] Extraction fin : song3.mp3 (succès)
+[2026-06-24 08:34:31] [P2] [INFO] Extraction début : song4.mp3
+[2026-06-24 08:34:31] [P2] [INFO] Extraction fin : song4.mp3 (succès)
+[2026-06-24 08:34:31] [P3] [INFO] Envoi début : song1.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:34:33] [P3] [INFO] Envoi fin : song1.mp3 (succès) — fichier supprimé
+[2026-06-24 08:34:34] [P3] [INFO] Envoi début : song2.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:34:36] [P3] [INFO] Envoi fin : song2.mp3 (succès) — fichier supprimé
+[2026-06-24 08:34:36] [P3] [INFO] Envoi début : song3.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:34:38] [P3] [INFO] Envoi fin : song3.mp3 (succès) — fichier supprimé
+[2026-06-24 08:34:38] [P3] [INFO] Envoi début : song4.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:34:40] [P3] [INFO] Envoi fin : song4.mp3 (succès) — fichier supprimé
+[2026-06-24 08:34:57] [P1] [INFO] Détection : C:\Musique\entrant\song1.mp3
+[2026-06-24 08:34:57] [P1] [INFO] Publié dans queue_mp3_paths : song1.mp3
+[2026-06-24 08:34:58] [P2] [INFO] Extraction début : song1.mp3
+[2026-06-24 08:34:58] [P2] [INFO] Extraction fin : song1.mp3 (succès)
+[2026-06-24 08:34:59] [P3] [INFO] Envoi début : song1.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:35:01] [P3] [INFO] Envoi fin : song1.mp3 (succès) — fichier supprimé
+[2026-06-24 08:38:32] [P1] [INFO] Détection : C:\Musique\entrant\song1.mp3
+[2026-06-24 08:38:32] [P1] [INFO] Publié dans queue_mp3_paths : song1.mp3
+[2026-06-24 08:38:32] [P1] [INFO] Détection : C:\Musique\entrant\song2.mp3
+[2026-06-24 08:38:32] [P1] [INFO] Publié dans queue_mp3_paths : song2.mp3
+[2026-06-24 08:38:32] [P1] [INFO] Détection : C:\Musique\entrant\song3.mp3
+[2026-06-24 08:38:32] [P1] [INFO] Publié dans queue_mp3_paths : song3.mp3
+[2026-06-24 08:38:32] [P1] [INFO] Détection : C:\Musique\entrant\song4.mp3
+[2026-06-24 08:38:32] [P1] [INFO] Publié dans queue_mp3_paths : song4.mp3
+[2026-06-24 08:38:33] [P2] [INFO] Extraction début : song1.mp3
+[2026-06-24 08:38:33] [P2] [INFO] Extraction fin : song1.mp3 (succès)
+[2026-06-24 08:38:33] [P2] [INFO] Extraction début : song2.mp3
+[2026-06-24 08:38:33] [P2] [INFO] Extraction fin : song2.mp3 (succès)
+[2026-06-24 08:38:33] [P2] [INFO] Extraction début : song3.mp3
+[2026-06-24 08:38:33] [P2] [INFO] Extraction fin : song3.mp3 (succès)
+[2026-06-24 08:38:33] [P2] [INFO] Extraction début : song4.mp3
+[2026-06-24 08:38:34] [P2] [INFO] Extraction fin : song4.mp3 (succès)
+[2026-06-24 08:38:34] [P3] [INFO] Envoi début : song1.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:38:36] [P3] [INFO] Envoi fin : song1.mp3 (succès) — fichier supprimé
+[2026-06-24 08:38:36] [P3] [INFO] Envoi début : song2.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:38:38] [P3] [INFO] Envoi fin : song2.mp3 (succès) — fichier supprimé
+[2026-06-24 08:38:38] [P3] [INFO] Envoi début : song3.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:38:40] [P3] [INFO] Envoi fin : song3.mp3 (succès) — fichier supprimé
+[2026-06-24 08:38:40] [P3] [INFO] Envoi début : song4.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 08:38:42] [P3] [INFO] Envoi fin : song4.mp3 (succès) — fichier supprimé
+[2026-06-24 09:01:26] [P1] [INFO] Détection : C:\Musique\entrant\Myuu-TenderRemains.mp3
+[2026-06-24 09:01:26] [P1] [INFO] Publié dans queue_mp3_paths : Myuu-TenderRemains.mp3
+[2026-06-24 09:01:26] [P1] [INFO] Détection : C:\Musique\entrant\Olivaw-Airwaves.mp3
+[2026-06-24 09:01:26] [P1] [INFO] Publié dans queue_mp3_paths : Olivaw-Airwaves.mp3
+[2026-06-24 09:01:26] [P1] [INFO] Détection : C:\Musique\entrant\MattiasWestlund-Miscellaneum-14WintersCall.mp3
+[2026-06-24 09:01:26] [P1] [INFO] Publié dans queue_mp3_paths : MattiasWestlund-Miscellaneum-14WintersCall.mp3
+[2026-06-24 09:01:26] [P2] [INFO] Extraction début : Myuu-TenderRemains.mp3
+[2026-06-24 09:01:26] [P2] [INFO] Extraction fin : Myuu-TenderRemains.mp3 (succès)
+[2026-06-24 09:01:26] [P2] [INFO] Extraction début : Olivaw-Airwaves.mp3
+[2026-06-24 09:01:26] [P2] [INFO] Extraction fin : Olivaw-Airwaves.mp3 (succès)
+[2026-06-24 09:01:26] [P2] [INFO] Extraction début : MattiasWestlund-Miscellaneum-14WintersCall.mp3
+[2026-06-24 09:01:27] [P2] [INFO] Extraction fin : MattiasWestlund-Miscellaneum-14WintersCall.mp3 (succès)
+[2026-06-24 09:01:27] [P3] [INFO] Envoi début : Myuu-TenderRemains.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:01:29] [P3] [INFO] Envoi fin : Myuu-TenderRemains.mp3 (succès) — fichier supprimé
+[2026-06-24 09:01:30] [P3] [INFO] Envoi début : Olivaw-Airwaves.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:01:32] [P3] [INFO] Envoi fin : Olivaw-Airwaves.mp3 (succès) — fichier supprimé
+[2026-06-24 09:01:32] [P3] [INFO] Envoi début : MattiasWestlund-Miscellaneum-14WintersCall.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:01:34] [P3] [INFO] Envoi fin : MattiasWestlund-Miscellaneum-14WintersCall.mp3 (succès) — fichier supprimé
+[2026-06-24 09:10:43] [P2] [INFO] P2 en attente sur queue_mp3_paths…
+[2026-06-24 09:10:43] [P1] [INFO] Surveillance démarrée : C:\Musique\entrant
+[2026-06-24 09:10:43] [P3] [INFO] P3 en attente sur queue_mp3_meta…
+[2026-06-24 09:11:25] [P1] [INFO] Détection : C:\Musique\entrant\Cybersdf-Dolling.mp3
+[2026-06-24 09:11:25] [P1] [INFO] Publié dans queue_mp3_paths : Cybersdf-Dolling.mp3
+[2026-06-24 09:11:25] [P1] [INFO] Détection : C:\Musique\entrant\Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:11:25] [P1] [INFO] Publié dans queue_mp3_paths : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:11:25] [P1] [INFO] Détection : C:\Musique\entrant\Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:11:25] [P1] [INFO] Publié dans queue_mp3_paths : Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:11:26] [P2] [INFO] Extraction début : Cybersdf-Dolling.mp3
+[2026-06-24 09:11:27] [P2] [INFO] Extraction fin : Cybersdf-Dolling.mp3 (succès)
+[2026-06-24 09:11:27] [P2] [INFO] Extraction début : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:11:27] [P2] [INFO] Extraction fin : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 (succès)
+[2026-06-24 09:11:27] [P2] [INFO] Extraction début : Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:11:27] [P2] [INFO] Extraction fin : Meydn-SynthwaveVibe.mp3 (succès)
+[2026-06-24 09:11:28] [P3] [INFO] Envoi début : Cybersdf-Dolling.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:11:31] [P3] [INFO] Envoi fin : Cybersdf-Dolling.mp3 (succès) — déplacé vers C:\Musique\traites\Cybersdf-Dolling.mp3
+[2026-06-24 09:11:31] [P3] [INFO] Envoi début : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:11:33] [P3] [INFO] Envoi fin : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 (succès) — déplacé vers C:\Musique\traites\Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:11:33] [P3] [INFO] Envoi début : Meydn-SynthwaveVibe.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:11:35] [P3] [INFO] Envoi fin : Meydn-SynthwaveVibe.mp3 (succès) — déplacé vers C:\Musique\traites\Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:24:59] [P1] [INFO] Détection : C:\Musique\entrant\Cybersdf-Dolling.mp3
+[2026-06-24 09:25:00] [P1] [INFO] Publié dans queue_mp3_paths : Cybersdf-Dolling.mp3
+[2026-06-24 09:25:00] [P1] [INFO] Détection : C:\Musique\entrant\Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:25:00] [P1] [INFO] Publié dans queue_mp3_paths : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:25:00] [P1] [INFO] Détection : C:\Musique\entrant\Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:25:00] [P1] [INFO] Publié dans queue_mp3_paths : Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:25:00] [P2] [INFO] Extraction début : Cybersdf-Dolling.mp3
+[2026-06-24 09:25:00] [P2] [INFO] Extraction fin : Cybersdf-Dolling.mp3 (succès)
+[2026-06-24 09:25:00] [P2] [INFO] Extraction début : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:25:00] [P2] [INFO] Extraction fin : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 (succès)
+[2026-06-24 09:25:01] [P2] [INFO] Extraction début : Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:25:01] [P2] [INFO] Extraction fin : Meydn-SynthwaveVibe.mp3 (succès)
+[2026-06-24 09:25:02] [P3] [INFO] Envoi début : Cybersdf-Dolling.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:25:04] [P3] [INFO] Envoi fin : Cybersdf-Dolling.mp3 (succès) — déplacé vers C:\Musique\traites\Cybersdf-Dolling.mp3
+[2026-06-24 09:25:04] [P3] [INFO] Envoi début : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:25:06] [P3] [INFO] Envoi fin : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 (succès) — déplacé vers C:\Musique\traites\Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:25:06] [P3] [INFO] Envoi début : Meydn-SynthwaveVibe.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:25:08] [P3] [INFO] Envoi fin : Meydn-SynthwaveVibe.mp3 (succès) — déplacé vers C:\Musique\traites\Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:28:16] [P1] [INFO] Détection : C:\Musique\entrant\Cybersdf-Dolling.mp3
+[2026-06-24 09:28:16] [P1] [INFO] Publié dans queue_mp3_paths : Cybersdf-Dolling.mp3
+[2026-06-24 09:28:16] [P1] [INFO] Détection : C:\Musique\entrant\Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:28:16] [P1] [INFO] Publié dans queue_mp3_paths : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:28:16] [P1] [INFO] Détection : C:\Musique\entrant\Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:28:16] [P1] [INFO] Publié dans queue_mp3_paths : Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:28:17] [P2] [INFO] Extraction début : Cybersdf-Dolling.mp3
+[2026-06-24 09:28:17] [P2] [INFO] Extraction fin : Cybersdf-Dolling.mp3 (succès)
+[2026-06-24 09:28:17] [P2] [INFO] Extraction début : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:28:18] [P2] [INFO] Extraction fin : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 (succès)
+[2026-06-24 09:28:18] [P2] [INFO] Extraction début : Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:28:18] [P2] [INFO] Extraction fin : Meydn-SynthwaveVibe.mp3 (succès)
+[2026-06-24 09:28:19] [P3] [INFO] Envoi début : Cybersdf-Dolling.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:28:21] [P3] [INFO] Envoi fin : Cybersdf-Dolling.mp3 (succès) — déplacé vers C:\Musique\traites\Cybersdf-Dolling.mp3
+[2026-06-24 09:28:21] [P3] [INFO] Envoi début : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:28:23] [P3] [INFO] Envoi fin : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 (succès) — déplacé vers C:\Musique\traites\Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:28:23] [P3] [INFO] Envoi début : Meydn-SynthwaveVibe.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:28:25] [P3] [INFO] Envoi fin : Meydn-SynthwaveVibe.mp3 (succès) — déplacé vers C:\Musique\traites\Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:40:37] [P1] [INFO] Détection : C:\Musique\entrant\Cybersdf-Dolling.mp3
+[2026-06-24 09:40:37] [P1] [INFO] Publié dans queue_mp3_paths : Cybersdf-Dolling.mp3
+[2026-06-24 09:40:37] [P1] [INFO] Détection : C:\Musique\entrant\Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:40:37] [P1] [INFO] Publié dans queue_mp3_paths : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:40:37] [P1] [INFO] Détection : C:\Musique\entrant\Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:40:37] [P1] [INFO] Publié dans queue_mp3_paths : Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:40:37] [P2] [INFO] Extraction début : Cybersdf-Dolling.mp3
+[2026-06-24 09:40:37] [P2] [INFO] Extraction fin : Cybersdf-Dolling.mp3 (succès)
+[2026-06-24 09:40:38] [P2] [INFO] Extraction début : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:40:38] [P2] [INFO] Extraction fin : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 (succès)
+[2026-06-24 09:40:38] [P3] [INFO] Envoi début : Cybersdf-Dolling.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:40:38] [P2] [INFO] Extraction début : Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:40:38] [P2] [INFO] Extraction fin : Meydn-SynthwaveVibe.mp3 (succès)
+[2026-06-24 09:40:40] [P3] [INFO] Envoi fin : Cybersdf-Dolling.mp3 (succès) — déplacé vers C:\Musique\traites\Cybersdf-Dolling.mp3
+[2026-06-24 09:40:40] [P3] [INFO] Envoi début : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:40:42] [P3] [INFO] Envoi fin : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 (succès) — déplacé vers C:\Musique\traites\Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:40:42] [P3] [INFO] Envoi début : Meydn-SynthwaveVibe.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:40:44] [P3] [INFO] Envoi fin : Meydn-SynthwaveVibe.mp3 (succès) — déplacé vers C:\Musique\traites\Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:48:30] [P1] [INFO] Détection : C:\Musique\entrant\Cybersdf-Dolling.mp3
+[2026-06-24 09:48:31] [P1] [INFO] Publié dans queue_mp3_paths : Cybersdf-Dolling.mp3
+[2026-06-24 09:48:31] [P1] [INFO] Détection : C:\Musique\entrant\Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:48:31] [P1] [INFO] Publié dans queue_mp3_paths : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:48:31] [P1] [INFO] Détection : C:\Musique\entrant\Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:48:31] [P1] [INFO] Publié dans queue_mp3_paths : Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:48:31] [P2] [INFO] Extraction début : Cybersdf-Dolling.mp3
+[2026-06-24 09:48:32] [P2] [INFO] Extraction fin : Cybersdf-Dolling.mp3 (succès)
+[2026-06-24 09:48:32] [P2] [INFO] Extraction début : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:48:32] [P2] [INFO] Extraction fin : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 (succès)
+[2026-06-24 09:48:32] [P2] [INFO] Extraction début : Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:48:32] [P2] [INFO] Extraction fin : Meydn-SynthwaveVibe.mp3 (succès)
+[2026-06-24 09:48:34] [P3] [INFO] Envoi début : Cybersdf-Dolling.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:48:36] [P3] [INFO] Envoi fin : Cybersdf-Dolling.mp3 (succès) — déplacé vers C:\Musique\traites\Cybersdf-Dolling.mp3
+[2026-06-24 09:48:36] [P3] [INFO] Envoi début : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:48:38] [P3] [INFO] Envoi fin : Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3 (succès) — déplacé vers C:\Musique\traites\Ghost_k_-_Stop_One_More_Time_Remix_2011.mp3
+[2026-06-24 09:48:38] [P3] [INFO] Envoi début : Meydn-SynthwaveVibe.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:48:40] [P3] [INFO] Envoi fin : Meydn-SynthwaveVibe.mp3 (succès) — déplacé vers C:\Musique\traites\Meydn-SynthwaveVibe.mp3
+[2026-06-24 09:59:53] [P1] [INFO] Détection : C:\Musique\entrant\Ankino.mp3
+[2026-06-24 09:59:53] [P1] [INFO] Publié dans queue_mp3_paths : Ankino.mp3
+[2026-06-24 09:59:53] [P1] [INFO] Détection : C:\Musique\entrant\Antanambao.MP3
+[2026-06-24 09:59:53] [P1] [INFO] Publié dans queue_mp3_paths : Antanambao.MP3
+[2026-06-24 09:59:53] [P1] [INFO] Détection : C:\Musique\entrant\IAO.MP3
+[2026-06-24 09:59:53] [P1] [INFO] Publié dans queue_mp3_paths : IAO.MP3
+[2026-06-24 09:59:55] [P2] [INFO] Extraction début : Ankino.mp3
+[2026-06-24 09:59:55] [P2] [INFO] Extraction fin : Ankino.mp3 (succès)
+[2026-06-24 09:59:55] [P3] [INFO] Envoi début : Ankino.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:59:55] [P2] [INFO] Extraction début : Antanambao.MP3
+[2026-06-24 09:59:55] [P2] [INFO] Extraction fin : Antanambao.MP3 (succès)
+[2026-06-24 09:59:55] [P2] [INFO] Extraction début : IAO.MP3
+[2026-06-24 09:59:56] [P2] [INFO] Extraction fin : IAO.MP3 (succès)
+[2026-06-24 09:59:57] [P3] [INFO] Envoi fin : Ankino.mp3 (succès) — déplacé vers C:\Musique\traites\Ankino.mp3
+[2026-06-24 09:59:57] [P3] [INFO] Envoi début : Antanambao.MP3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:59:59] [P3] [INFO] Envoi fin : Antanambao.MP3 (succès) — déplacé vers C:\Musique\traites\Antanambao.MP3
+[2026-06-24 09:59:59] [P3] [INFO] Envoi début : IAO.MP3 vers http://localhost:8000/api/mp3
+[2026-06-24 10:00:01] [P3] [INFO] Envoi fin : IAO.MP3 (succès) — déplacé vers C:\Musique\traites\IAO.MP3

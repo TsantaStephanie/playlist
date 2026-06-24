@@ -2,6 +2,7 @@ watch:
   directory: "C:/Musique/entrant"
   interval_seconds: 600        # scan toutes les 10 minutes
   error_directory: "C:/Musique/erreurs"
+  processed_directory: "C:/Musique/traites"
 
 database:
   host: "localhost"

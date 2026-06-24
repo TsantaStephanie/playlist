@@ -30,14 +30,23 @@ export interface Playlist {
   total_tracks: number
 }
 
+export interface PlaylistProposal {
+  name: string
+  items: MP3[]
+  total_duration: number
+  total_tracks: number
+}
+
 export interface GenerateRequest {
   duration_minutes: number
   name?: string
-  genre?: string
-  artist?: string
+  genres?: string[]
+  excluded_genres?: string[]
+  artists?: string[]
+  excluded_artists?: string[]
   language?: string
-  year?: number
-  exclusions?: string[]
+  year_from?: number
+  year_to?: number
 }
 
 export interface MP3Filters {

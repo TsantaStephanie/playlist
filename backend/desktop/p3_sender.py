@@ -48,16 +48,22 @@ def _handle(metadata: dict) -> None:
     error_dir = Path(cfg["watch"]["error_directory"])
 
     file_path = Path(metadata.get("file_path", ""))
+    processed_dir = Path(cfg["watch"]["processed_directory"])
+    processed_dir.mkdir(parents=True, exist_ok=True)
+    dest = processed_dir / file_path.name
+
+    # Enregistre le chemin FINAL en base (pas le chemin entrant)
+    metadata["file_path"] = str(dest)
     log.info(f"Envoi début : {file_path.name} vers {api_url}")
 
     success = _send_to_api(metadata, api_url, timeout, max_retries)
 
     if success:
-        log.info(f"Envoi fin : {file_path.name} (succès) — fichier supprimé")
         try:
-            file_path.unlink(missing_ok=True)
+            shutil.move(str(file_path), dest)
+            log.info(f"Envoi fin : {file_path.name} (succès) — déplacé vers {dest}")
         except OSError as exc:
-            log.error(f"Impossible de supprimer {file_path.name} : {exc}")
+            log.error(f"Impossible de déplacer {file_path.name} : {exc}")
     else:
         log.error(f"Envoi fin : {file_path.name} (échec) — fichier conservé")
         if on_failure == "move" and file_path.exists():

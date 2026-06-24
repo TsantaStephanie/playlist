@@ -7,9 +7,20 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.schemas.mp3 import MP3Create, MP3Response, MP3Update
 from app.core.database import get_db
+from app.infrastructure.database.repositories import MP3Repository
 from app.services.mp3_service import MP3Service
 
 router = APIRouter(prefix="/api/mp3", tags=["MP3"])
+
+
+@router.get("/artists", response_model=list[str])
+async def list_artists(db: AsyncSession = Depends(get_db)):
+    return await MP3Repository(db).list_distinct("artist")
+
+
+@router.get("/genres", response_model=list[str])
+async def list_genres(db: AsyncSession = Depends(get_db)):
+    return await MP3Repository(db).list_distinct("genre")
 
 
 @router.post("", response_model=MP3Response, status_code=201)
@@ -52,6 +63,13 @@ async def delete_mp3(mp3_id: int, db: AsyncSession = Depends(get_db)):
 async def stream_mp3(mp3_id: int, db: AsyncSession = Depends(get_db)):
     mp3 = await MP3Service(db).get(mp3_id)
     path = Path(mp3.file_path)
+
+    # Fallback : cherche dans traites/ si le chemin original n'existe plus
     if not path.exists():
-        raise HTTPException(status_code=404, detail="Fichier audio introuvable sur le serveur")
+        fallback = Path("C:/Musique/traites") / path.name
+        if fallback.exists():
+            path = fallback
+        else:
+            raise HTTPException(status_code=404, detail=f"Fichier audio introuvable : {path.name}")
+
     return FileResponse(path, media_type="audio/mpeg", filename=path.name)

@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { api } from '@/api/client'
-import type { GenerateRequest, Playlist } from '@/types'
+import type { GenerateRequest, Playlist, PlaylistProposal } from '@/types'
 
 export const usePlaylistStore = defineStore('playlist', () => {
   const playlists = ref<Playlist[]>([])
-  const candidates = ref<Playlist[]>([])
+  const candidates = ref<PlaylistProposal[]>([])
   const loading = ref(false)
   const error = ref<string | null>(null)
 

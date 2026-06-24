@@ -70,61 +70,59 @@ class PlaylistGeneratorService:
         target_seconds = target_minutes * 60
 
         filters: dict[str, Any] = {}
-        if criteria.get("genre"):
-            filters["genre"] = criteria["genre"]
-        if criteria.get("artist"):
-            filters["artist"] = criteria["artist"]
         if criteria.get("language"):
             filters["language"] = criteria["language"]
-        if criteria.get("year"):
-            filters["year"] = criteria["year"]
 
         songs = await self.mp3_repo.list(filters)
 
-        exclusions: list[str] = criteria.get("exclusions", [])
-        if exclusions:
-            songs = [
-                s for s in songs
-                if not any(
-                    (ex.lower() in (s.genre or "").lower() or ex.lower() in (s.artist or "").lower())
-                    for ex in exclusions
-                )
-            ]
+        genres = [g.lower() for g in criteria.get("genres", [])]
+        excluded_genres = [g.lower() for g in criteria.get("excluded_genres", [])]
+        artists = [a.lower() for a in criteria.get("artists", [])]
+        excluded_artists = [a.lower() for a in criteria.get("excluded_artists", [])]
+        year_from = criteria.get("year_from")
+        year_to = criteria.get("year_to")
+
+        if genres:
+            songs = [s for s in songs if (s.genre or "").lower() in genres]
+        if excluded_genres:
+            songs = [s for s in songs if (s.genre or "").lower() not in excluded_genres]
+        if artists:
+            songs = [s for s in songs if (s.artist or "").lower() in artists]
+        if excluded_artists:
+            songs = [s for s in songs if (s.artist or "").lower() not in excluded_artists]
+        if year_from:
+            songs = [s for s in songs if s.year is not None and s.year >= year_from]
+        if year_to:
+            songs = [s for s in songs if s.year is not None and s.year <= year_to]
 
         if not songs:
-            detail = "Aucun morceau ne correspond aux critères"
-            if filters:
-                detail += f" ({', '.join(f'{k}={v}' for k, v in filters.items())})"
-            if exclusions:
-                detail += f" — exclusions : {', '.join(exclusions)}"
-            raise HTTPException(status_code=422, detail=detail)
+            raise HTTPException(status_code=422, detail="Aucun morceau ne correspond aux critères sélectionnés")
 
-        candidates = _build_candidates(songs, target_seconds)
-        playlists: list[PlaylistModel] = []
+        candidates = _build_candidates(songs, target_seconds, top_n=1)
+        proposals: list[dict] = []
 
         for i, candidate in enumerate(candidates, start=1):
             if not candidate:
                 continue
             name = criteria.get("name", f"Playlist #{i}")
-            if len(candidates) > 1:
-                name = f"{name} (v{i})"
-            playlist = await self.playlist_repo.create(
-                name=name,
-                criteria=criteria,
-                mp3_ids=[s.id for s in candidate],
-            )
-            playlists.append(playlist)
+            proposals.append({"name": name, "items": candidate})
 
-        if not playlists:
+        if not proposals:
             raise HTTPException(status_code=422, detail="Could not build a valid playlist with given criteria")
 
-        return playlists
+        return proposals
 
     async def save(self, name: str, criteria: dict, mp3_ids: list[int]) -> PlaylistModel:
         return await self.playlist_repo.create(name=name, criteria=criteria, mp3_ids=mp3_ids)
 
     async def get(self, playlist_id: int) -> PlaylistModel:
         playlist = await self.playlist_repo.get_by_id(playlist_id)
+        if not playlist:
+            raise HTTPException(status_code=404, detail="Playlist not found")
+        return playlist
+
+    async def update(self, playlist_id: int, name: str | None, mp3_ids: list[int]) -> PlaylistModel:
+        playlist = await self.playlist_repo.update(playlist_id, name, mp3_ids)
         if not playlist:
             raise HTTPException(status_code=404, detail="Playlist not found")
         return playlist

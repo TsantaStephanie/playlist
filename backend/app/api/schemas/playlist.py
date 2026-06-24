@@ -6,6 +6,13 @@ from pydantic import BaseModel, ConfigDict
 from app.api.schemas.mp3 import MP3Response
 
 
+class PlaylistProposalResponse(BaseModel):
+    name: str
+    items: list[MP3Response]
+    total_duration: float
+    total_tracks: int
+
+
 class PlaylistItemResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -42,14 +49,21 @@ class PlaylistResponse(BaseModel):
 class GeneratePlaylistRequest(BaseModel):
     duration_minutes: float
     name: Optional[str] = "Ma playlist"
-    genre: Optional[str] = None
-    artist: Optional[str] = None
+    genres: list[str] = []
+    excluded_genres: list[str] = []
+    artists: list[str] = []
+    excluded_artists: list[str] = []
     language: Optional[str] = None
-    year: Optional[int] = None
-    exclusions: list[str] = []
+    year_from: Optional[int] = None
+    year_to: Optional[int] = None
 
 
 class SavePlaylistRequest(BaseModel):
     name: str
     criteria: dict[str, Any] = {}
+    mp3_ids: list[int]
+
+
+class UpdatePlaylistRequest(BaseModel):
+    name: Optional[str] = None
     mp3_ids: list[int]

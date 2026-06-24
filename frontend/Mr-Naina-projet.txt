@@ -334,3 +334,19 @@ Résultat attendu :
 ================================================================================
 FIN DU DOCUMENT
 ================================================================================
+
+
+P1 — Surveillance (p1_watcher.py)
+Surveille le dossier C:\Musique\entrant\ en temps réel. Dès qu'un fichier .mp3 apparaît, il publie son chemin dans la file d'attente queue_1 (table PostgreSQL).
+
+P2 — Extraction (p2_extractor.py)
+Lit queue_1, ouvre chaque fichier MP3 avec mutagen pour extraire les métadonnées (titre, artiste, album, genre, durée, bitrate…), puis publie le résultat dans queue_2.
+
+P3 — Envoi (p3_sender.py)
+Lit queue_2, envoie les métadonnées vers l'API FastAPI (POST /api/mp3). Si succès → déplace le fichier dans C:\Musique\traites\. Si échec → déplace dans C:\Musique\erreurs\.
+
+P4 — Nettoyage (p4_cleaner.py)
+Programme manuel (pas en continu). Scanne C:\Musique\entrant\ et nettoie les fichiers restants (orphelins non traités). Supporte --dry-run pour simuler sans supprimer.
+
+dans programme 3 , le pro doit lire 1 fichier (blacklist) , dans ce fichier le blacklist se divise en 2 (artiste) , les artistes compris dedans donc ne seront jamais 
+générées dans la playlist et ces fichiers y compris seront dans la liste des mp3 à supprimés 

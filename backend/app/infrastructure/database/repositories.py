@@ -1,6 +1,8 @@
+from __future__ import annotations
+
 from typing import Any, Optional
 
-from sqlalchemy import select
+from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
@@ -52,6 +54,13 @@ class MP3Repository:
         await self.db.refresh(mp3)
         return mp3
 
+    async def list_distinct(self, column: str) -> list[str]:
+        col = getattr(MP3Model, column)
+        result = await self.db.execute(
+            select(col).distinct().where(col.isnot(None)).order_by(col)
+        )
+        return [row[0] for row in result.all()]
+
     async def delete(self, mp3_id: int) -> bool:
         mp3 = await self.get_by_id(mp3_id)
         if not mp3:
@@ -90,6 +99,21 @@ class PlaylistRepository:
             select(PlaylistModel).options(selectinload(PlaylistModel.items).selectinload(PlaylistItemModel.mp3))
         )
         return list(result.scalars().all())
+
+    async def update(self, playlist_id: int, name: Optional[str], mp3_ids: list[int]) -> Optional[PlaylistModel]:
+        playlist = await self.get_by_id(playlist_id)
+        if not playlist:
+            return None
+        if name:
+            playlist.name = name
+            await self.db.flush()
+        # DELETE SQL direct pour contourner le cache de l'identity map
+        await self.db.execute(delete(PlaylistItemModel).where(PlaylistItemModel.playlist_id == playlist_id))
+        for position, mp3_id in enumerate(mp3_ids, start=1):
+            self.db.add(PlaylistItemModel(playlist_id=playlist_id, mp3_id=mp3_id, position=position))
+        await self.db.commit()
+        self.db.expire_all()  # force rechargement depuis la DB
+        return await self.get_by_id(playlist_id)
 
     async def delete(self, playlist_id: int) -> bool:
         playlist = await self.get_by_id(playlist_id)
