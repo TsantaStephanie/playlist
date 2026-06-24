@@ -1,0 +1,299 @@
+[2026-06-24 09:53:51] [P1] [INFO] Détection : D:\Download\mp3\ANTIFRAGILE(MP3_160K)_1.mp3
+[2026-06-24 09:53:51] [P1] [INFO] Publié dans queue_mp3_paths : ANTIFRAGILE(MP3_160K)_1.mp3
+[2026-06-24 09:53:52] [P2] [INFO] Extraction début : ANTIFRAGILE(MP3_160K)_1.mp3
+[2026-06-24 09:53:52] [P2] [INFO] Métadonnées extraites pour ANTIFRAGILE(MP3_160K)_1.mp3 :
+[2026-06-24 09:53:52] [P2] [INFO] {
+  "file_path": "D:\\Download\\mp3\\ANTIFRAGILE(MP3_160K)_1.mp3",
+  "title": "﻿ANTIFRAGILE",
+  "artist": "﻿LE SSERAFIM - Topic",
+  "album": "﻿LE SSERAFIM - Topic",
+  "genre": null,
+  "year": null,
+  "track_number": null,
+  "language": null,
+  "duration": 184.46,
+  "bitrate": 160
+}
+[2026-06-24 09:53:52] [P2] [INFO] Extraction fin : ANTIFRAGILE(MP3_160K)_1.mp3 (succès)
+[2026-06-24 09:53:54] [P3] [INFO] --- [Chargement] Réception du payload pour le fichier : ANTIFRAGILE(MP3_160K)_1.mp3 ---
+[2026-06-24 09:53:54] [P3] [INFO] Contenu chargé depuis la file : 
+{
+  "year": null,
+  "album": "﻿LE SSERAFIM - Topic",
+  "genre": null,
+  "title": "﻿ANTIFRAGILE",
+  "artist": "﻿LE SSERAFIM - Topic",
+  "bitrate": 160,
+  "duration": 184.46,
+  "language": null,
+  "file_path": "D:\\Download\\mp3\\ANTIFRAGILE(MP3_160K)_1.mp3",
+  "track_number": null
+}
+[2026-06-24 09:53:54] [P3] [INFO] Envoi début : ANTIFRAGILE(MP3_160K)_1.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:53:56] [P3] [INFO] Envoi fin : ANTIFRAGILE(MP3_160K)_1.mp3 (succès) — Fichier conservé dans D:\Download\mp3
+[2026-06-24 09:55:23] [P1] [INFO] Détection : D:\Download\mp3\SERAFF.mp3
+[2026-06-24 09:55:23] [P1] [INFO] Publié dans queue_mp3_paths : SERAFF.mp3
+[2026-06-24 09:55:25] [P2] [INFO] Extraction début : SERAFF.mp3
+[2026-06-24 09:55:25] [P2] [INFO] Métadonnées extraites pour SERAFF.mp3 :
+[2026-06-24 09:55:25] [P2] [INFO] {
+  "file_path": "D:\\Download\\mp3\\SERAFF.mp3",
+  "title": "﻿ANTIFRAGILE",
+  "artist": "﻿LE SSERAFIM - Topic",
+  "album": "﻿LE SSERAFIM - Topic",
+  "genre": null,
+  "year": null,
+  "track_number": null,
+  "language": null,
+  "duration": 184.46,
+  "bitrate": 160
+}
+[2026-06-24 09:55:25] [P2] [INFO] Extraction fin : SERAFF.mp3 (succès)
+[2026-06-24 09:55:27] [P3] [INFO] --- [Chargement] Réception du payload pour le fichier : SERAFF.mp3 ---
+[2026-06-24 09:55:27] [P3] [INFO] Contenu chargé depuis la file : 
+{
+  "year": null,
+  "album": "﻿LE SSERAFIM - Topic",
+  "genre": null,
+  "title": "﻿ANTIFRAGILE",
+  "artist": "﻿LE SSERAFIM - Topic",
+  "bitrate": 160,
+  "duration": 184.46,
+  "language": null,
+  "file_path": "D:\\Download\\mp3\\SERAFF.mp3",
+  "track_number": null
+}
+[2026-06-24 09:55:27] [P3] [INFO] Envoi début : SERAFF.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:55:29] [P3] [INFO] Envoi fin : SERAFF.mp3 (succès) — Fichier conservé dans D:\Download\mp3
+[2026-06-24 09:57:30] [P3] [INFO] P3 en attente sur queue_mp3_meta…
+[2026-06-24 09:57:57] [P1] [INFO] Détection : D:\Download\mp3\SERAFF-3.mp3
+[2026-06-24 09:57:57] [P1] [INFO] Publié dans queue_mp3_paths : SERAFF-3.mp3
+[2026-06-24 09:57:58] [P2] [INFO] Extraction début : SERAFF-3.mp3
+[2026-06-24 09:57:58] [P2] [INFO] Métadonnées extraites pour SERAFF-3.mp3 :
+[2026-06-24 09:57:58] [P2] [INFO] {
+  "file_path": "D:\\Download\\mp3\\SERAFF-3.mp3",
+  "title": "﻿ANTIFRAGILE",
+  "artist": "﻿LE SSERAFIM - Topic",
+  "album": "﻿LE SSERAFIM - Topic",
+  "genre": null,
+  "year": null,
+  "track_number": null,
+  "language": null,
+  "duration": 184.46,
+  "bitrate": 160
+}
+[2026-06-24 09:57:58] [P2] [INFO] Extraction fin : SERAFF-3.mp3 (succès)
+[2026-06-24 09:57:59] [P3] [INFO] --- [Chargement] Réception du payload pour le fichier : SERAFF-3.mp3 ---
+[2026-06-24 09:57:59] [P3] [INFO] Contenu chargé depuis la file : 
+{
+  "year": null,
+  "album": "﻿LE SSERAFIM - Topic",
+  "genre": null,
+  "title": "﻿ANTIFRAGILE",
+  "artist": "﻿LE SSERAFIM - Topic",
+  "bitrate": 160,
+  "duration": 184.46,
+  "language": null,
+  "file_path": "D:\\Download\\mp3\\SERAFF-3.mp3",
+  "track_number": null
+}
+[2026-06-24 09:57:59] [P3] [INFO] Envoi début : SERAFF-3.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 09:58:01] [P3] [INFO] Envoi fin : SERAFF-3.mp3 (succès) — Fichier conservé dans D:\Download\mp3
+[2026-06-24 10:01:14] [P1] [INFO] Détection : D:\Download\mp3\S.mp3
+[2026-06-24 10:01:14] [P1] [INFO] Publié dans queue_mp3_paths : S.mp3
+[2026-06-24 10:01:16] [P2] [INFO] Extraction début : S.mp3
+[2026-06-24 10:01:16] [P2] [INFO] Métadonnées extraites pour S.mp3 :
+[2026-06-24 10:01:16] [P2] [INFO] {
+  "file_path": "D:\\Download\\mp3\\S.mp3",
+  "title": "﻿ANTIFRAGILE",
+  "artist": "﻿LE SSERAFIM - Topic",
+  "album": "﻿LE SSERAFIM - Topic",
+  "genre": null,
+  "year": null,
+  "track_number": null,
+  "language": null,
+  "duration": 184.46,
+  "bitrate": 160
+}
+[2026-06-24 10:01:16] [P2] [INFO] Extraction fin : S.mp3 (succès)
+[2026-06-24 10:01:17] [P3] [INFO] --- [Chargement] Réception du payload pour le fichier : S.mp3 ---
+[2026-06-24 10:01:17] [P3] [INFO] Contenu chargé depuis la file : 
+{
+  "year": null,
+  "album": "﻿LE SSERAFIM - Topic",
+  "genre": null,
+  "title": "﻿ANTIFRAGILE",
+  "artist": "﻿LE SSERAFIM - Topic",
+  "bitrate": 160,
+  "duration": 184.46,
+  "language": null,
+  "file_path": "D:\\Download\\mp3\\S.mp3",
+  "track_number": null
+}
+[2026-06-24 10:01:17] [P3] [INFO] Envoi début : S.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 10:01:19] [P3] [INFO] Envoi fin : S.mp3 (succès) — Fichier conservé dans D:\Download\mp3
+[2026-06-24 10:04:50] [P3] [INFO] P3 en attente sur queue_mp3_meta…
+[2026-06-24 10:08:17] [P1] [INFO] Détection : D:\Download\mp3\Ankino.mp3
+[2026-06-24 10:08:18] [P1] [INFO] Publié dans queue_mp3_paths : Ankino.mp3
+[2026-06-24 10:08:18] [P2] [INFO] Extraction début : Ankino.mp3
+[2026-06-24 10:08:18] [P2] [INFO] Métadonnées extraites pour Ankino.mp3 :
+[2026-06-24 10:08:18] [P2] [INFO] {
+  "file_path": "D:\\Download\\mp3\\Ankino.mp3",
+  "title": "Bodo",
+  "artist": null,
+  "album": "Album Bodo",
+  "genre": "Pop",
+  "year": 2000,
+  "track_number": null,
+  "language": null,
+  "duration": 230.46,
+  "bitrate": 128
+}
+[2026-06-24 10:08:19] [P2] [INFO] Extraction fin : Ankino.mp3 (succès)
+[2026-06-24 10:08:20] [P3] [INFO] --- [Chargement] Réception du payload pour le fichier : Ankino.mp3 ---
+[2026-06-24 10:08:20] [P3] [INFO] Contenu chargé depuis la file : 
+{
+  "year": 2000,
+  "album": "Album Bodo",
+  "genre": "Pop",
+  "title": "Bodo",
+  "artist": null,
+  "bitrate": 128,
+  "duration": 230.46,
+  "language": null,
+  "file_path": "D:\\Download\\mp3\\Ankino.mp3",
+  "track_number": null
+}
+[2026-06-24 10:08:20] [P3] [INFO] Envoi début : Ankino.mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 10:08:23] [P3] [INFO] Envoi fin : Ankino.mp3 (succès) — Fichier conservé dans D:\Download\mp3
+[2026-06-24 10:10:27] [P1] [INFO] Détection : D:\Download\mp3\Antanambao.MP3
+[2026-06-24 10:10:27] [P1] [INFO] Publié dans queue_mp3_paths : Antanambao.MP3
+[2026-06-24 10:10:28] [P2] [INFO] Extraction début : Antanambao.MP3
+[2026-06-24 10:10:28] [P2] [INFO] Métadonnées extraites pour Antanambao.MP3 :
+[2026-06-24 10:10:28] [P2] [INFO] {
+  "file_path": "D:\\Download\\mp3\\Antanambao.MP3",
+  "title": "Antanambao",
+  "artist": "Bekoto Augustin",
+  "album": "Album Bekoto",
+  "genre": "Folk",
+  "year": 1980,
+  "track_number": 2,
+  "language": null,
+  "duration": 174.56,
+  "bitrate": 128
+}
+[2026-06-24 10:10:29] [P2] [INFO] Extraction fin : Antanambao.MP3 (succès)
+[2026-06-24 10:10:30] [P3] [INFO] --- [Chargement] Réception du payload pour le fichier : Antanambao.MP3 ---
+[2026-06-24 10:10:30] [P3] [INFO] Contenu chargé depuis la file : 
+{
+  "year": 1980,
+  "album": "Album Bekoto",
+  "genre": "Folk",
+  "title": "Antanambao",
+  "artist": "Bekoto Augustin",
+  "bitrate": 128,
+  "duration": 174.56,
+  "language": null,
+  "file_path": "D:\\Download\\mp3\\Antanambao.MP3",
+  "track_number": 2
+}
+[2026-06-24 10:10:30] [P3] [INFO] Envoi début : Antanambao.MP3 vers http://localhost:8000/api/mp3
+[2026-06-24 10:10:32] [P3] [INFO] Envoi fin : Antanambao.MP3 (succès) — Fichier conservé dans D:\Download\mp3
+[2026-06-24 10:11:30] [P1] [INFO] Détection : D:\Download\mp3\IAO.MP3
+[2026-06-24 10:11:30] [P1] [INFO] Publié dans queue_mp3_paths : IAO.MP3
+[2026-06-24 10:11:31] [P2] [INFO] Extraction début : IAO.MP3
+[2026-06-24 10:11:31] [P2] [INFO] Métadonnées extraites pour IAO.MP3 :
+[2026-06-24 10:11:31] [P2] [INFO] {
+  "file_path": "D:\\Download\\mp3\\IAO.MP3",
+  "title": "IAO",
+  "artist": "ROSSY",
+  "album": "IAO",
+  "genre": "salegy",
+  "year": 1990,
+  "track_number": 1,
+  "language": null,
+  "duration": 228.5,
+  "bitrate": 128
+}
+[2026-06-24 10:11:31] [P2] [INFO] Extraction fin : IAO.MP3 (succès)
+[2026-06-24 10:11:32] [P3] [INFO] --- [Chargement] Réception du payload pour le fichier : IAO.MP3 ---
+[2026-06-24 10:11:32] [P3] [INFO] Contenu chargé depuis la file : 
+{
+  "year": 1990,
+  "album": "IAO",
+  "genre": "salegy",
+  "title": "IAO",
+  "artist": "ROSSY",
+  "bitrate": 128,
+  "duration": 228.5,
+  "language": null,
+  "file_path": "D:\\Download\\mp3\\IAO.MP3",
+  "track_number": 1
+}
+[2026-06-24 10:11:32] [P3] [INFO] Envoi début : IAO.MP3 vers http://localhost:8000/api/mp3
+[2026-06-24 10:11:34] [P3] [INFO] Envoi fin : IAO.MP3 (succès) — Fichier conservé dans D:\Download\mp3
+[2026-06-24 10:13:03] [P1] [INFO] Détection : D:\Download\mp3\IAO.MP3
+[2026-06-24 10:13:04] [P1] [INFO] Publié dans queue_mp3_paths : IAO.MP3
+[2026-06-24 10:13:06] [P2] [INFO] Extraction début : IAO.MP3
+[2026-06-24 10:13:06] [P2] [INFO] Métadonnées extraites pour IAO.MP3 :
+[2026-06-24 10:13:06] [P2] [INFO] {
+  "file_path": "D:\\Download\\mp3\\IAO.MP3",
+  "title": "IAO",
+  "artist": "ROSSY",
+  "album": "IAO",
+  "genre": "salegy",
+  "year": 1990,
+  "track_number": 1,
+  "language": null,
+  "duration": 228.5,
+  "bitrate": 128
+}
+[2026-06-24 10:13:06] [P2] [INFO] Extraction fin : IAO.MP3 (succès)
+[2026-06-24 10:13:07] [P3] [INFO] --- [Chargement] Réception du payload pour le fichier : IAO.MP3 ---
+[2026-06-24 10:13:07] [P3] [INFO] Contenu chargé depuis la file : 
+{
+  "year": 1990,
+  "album": "IAO",
+  "genre": "salegy",
+  "title": "IAO",
+  "artist": "ROSSY",
+  "bitrate": 128,
+  "duration": 228.5,
+  "language": null,
+  "file_path": "D:\\Download\\mp3\\IAO.MP3",
+  "track_number": 1
+}
+[2026-06-24 10:13:07] [P3] [INFO] Envoi début : IAO.MP3 vers http://localhost:8000/api/mp3
+[2026-06-24 10:13:09] [P3] [INFO] Envoi fin : IAO.MP3 (succès) — Fichier conservé dans D:\Download\mp3
+[2026-06-24 10:15:15] [P1] [INFO] Détection : D:\Download\mp3\Eminem_-_River__Audio__ft._Ed_Sheeran(256k).mp3
+[2026-06-24 10:15:15] [P1] [INFO] Publié dans queue_mp3_paths : Eminem_-_River__Audio__ft._Ed_Sheeran(256k).mp3
+[2026-06-24 10:15:16] [P2] [INFO] Extraction début : Eminem_-_River__Audio__ft._Ed_Sheeran(256k).mp3
+[2026-06-24 10:15:16] [P2] [INFO] Métadonnées extraites pour Eminem_-_River__Audio__ft._Ed_Sheeran(256k).mp3 :
+[2026-06-24 10:15:16] [P2] [INFO] {
+  "file_path": "D:\\Download\\mp3\\Eminem_-_River__Audio__ft._Ed_Sheeran(256k).mp3",
+  "title": null,
+  "artist": null,
+  "album": null,
+  "genre": null,
+  "year": null,
+  "track_number": null,
+  "language": null,
+  "duration": 222.05,
+  "bitrate": 256
+}
+[2026-06-24 10:15:16] [P2] [INFO] Extraction fin : Eminem_-_River__Audio__ft._Ed_Sheeran(256k).mp3 (succès)
+[2026-06-24 10:15:17] [P3] [INFO] --- [Chargement] Réception du payload pour le fichier : Eminem_-_River__Audio__ft._Ed_Sheeran(256k).mp3 ---
+[2026-06-24 10:15:17] [P3] [INFO] Contenu chargé depuis la file : 
+{
+  "year": null,
+  "album": null,
+  "genre": null,
+  "title": null,
+  "artist": null,
+  "bitrate": 256,
+  "duration": 222.05,
+  "language": null,
+  "file_path": "D:\\Download\\mp3\\Eminem_-_River__Audio__ft._Ed_Sheeran(256k).mp3",
+  "track_number": null
+}
+[2026-06-24 10:15:17] [P3] [INFO] Envoi début : Eminem_-_River__Audio__ft._Ed_Sheeran(256k).mp3 vers http://localhost:8000/api/mp3
+[2026-06-24 10:15:19] [P3] [INFO] Envoi fin : Eminem_-_River__Audio__ft._Ed_Sheeran(256k).mp3 (succès) — Fichier conservé dans D:\Download\mp3

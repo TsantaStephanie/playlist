@@ -1,7 +1,8 @@
 """P3 — Envoi des métadonnées vers l'API web.
 
-Consomme queue_2, POST vers l'API, puis supprime ou déplace le fichier source.
+Consomme queue_2, POST vers l'API, puis conserve ou déplace le fichier source en cas d'erreur.
 """
+import json
 import shutil
 import time
 from pathlib import Path
@@ -48,16 +49,17 @@ def _handle(metadata: dict) -> None:
     error_dir = Path(cfg["watch"]["error_directory"])
 
     file_path = Path(metadata.get("file_path", ""))
+    
+    # LOGS : Chargement des métadonnées reçues de l'étape P2
+    log.info(f"--- [Chargement] Réception du payload pour le fichier : {file_path.name} ---")
+    log.info(f"Contenu chargé depuis la file : \n{json.dumps(metadata, indent=2, ensure_ascii=False)}")
     log.info(f"Envoi début : {file_path.name} vers {api_url}")
 
     success = _send_to_api(metadata, api_url, timeout, max_retries)
 
     if success:
-        log.info(f"Envoi fin : {file_path.name} (succès) — fichier supprimé")
-        try:
-            file_path.unlink(missing_ok=True)
-        except OSError as exc:
-            log.error(f"Impossible de supprimer {file_path.name} : {exc}")
+        # CORRECTION : Le fichier est désormais conservé sur votre disque local
+        log.info(f"Envoi fin : {file_path.name} (succès) — Fichier conservé dans {file_path.parent}")
     else:
         log.error(f"Envoi fin : {file_path.name} (échec) — fichier conservé")
         if on_failure == "move" and file_path.exists():

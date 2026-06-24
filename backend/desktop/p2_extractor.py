@@ -5,6 +5,7 @@ Consomme queue_1, extrait les tags ID3 via mutagen, publie dans queue_2.
 from pathlib import Path
 
 import yaml
+import json
 from mutagen import MutagenError
 from mutagen.easyid3 import EasyID3
 from mutagen.mp3 import MP3
@@ -69,6 +70,9 @@ def _handle(payload: dict) -> None:
 
     try:
         metadata = _extract_metadata(file_path)
+        log.info(f"Métadonnées extraites pour {Path(file_path).name} :")
+        log.info(json.dumps(metadata, indent=2, ensure_ascii=False))
+
         publish(queue_2, metadata)
         log.info(f"Extraction fin : {Path(file_path).name} (succès)")
     except MutagenError as exc:

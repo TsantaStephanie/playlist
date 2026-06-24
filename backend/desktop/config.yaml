@@ -1,14 +1,14 @@
 watch:
-  directory: "C:/Musique/entrant"
+  directory: "D:/Download/mp3"
   interval_seconds: 600        # scan toutes les 10 minutes
-  error_directory: "C:/Musique/erreurs"
+  error_directory: "D:/Download/mp3/erreurs"
 
 database:
   host: "localhost"
-  port: 5433
+  port: 5432
   name: "playlist_db"
   user: "postgres"
-  password: "etu003146"
+  password: "postgres"
 
 queues:
   queue_1: "queue_mp3_paths"   # P1 → P2

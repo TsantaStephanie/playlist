@@ -2,7 +2,7 @@
 
 <template>
   <nav class="navbar">
-    <span class="brand">🎵 Mr Naina</span>
+    <span class="brand">🎵 Playlist Project </span>
     <router-link to="/mp3">Bibliothèque</router-link>
     <router-link to="/generate">Générer</router-link>
     <router-link to="/playlists">Playlists</router-link>
@@ -14,7 +14,7 @@
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #0f0f1a; color: #e2e8f0; font-family: system-ui, sans-serif; min-height: 100vh; }
+body { background: #0f0f1a; color: #749fd7; font-family: system-ui, sans-serif; min-height: 100vh; }
 </style>
 
 <style scoped>
@@ -23,8 +23,8 @@ body { background: #0f0f1a; color: #e2e8f0; font-family: system-ui, sans-serif; 
   align-items: center;
   gap: 1.5rem;
   padding: 0.85rem 1.5rem;
-  background: #1a1a2e;
-  border-bottom: 1px solid #2d2d4e;
+  background: #0d0d41;
+  border-bottom: 1px solid #515188;
   position: sticky;
   top: 0;
   z-index: 10;

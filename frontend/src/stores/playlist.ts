@@ -41,3 +41,5 @@ export const usePlaylistStore = defineStore('playlist', () => {
 
   return { playlists, candidates, loading, error, fetchAll, generate, remove }
 })
+
+
