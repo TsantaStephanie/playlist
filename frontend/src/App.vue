@@ -4,8 +4,8 @@
   <nav class="navbar">
     <span class="brand">🎵 Playlist Project </span>
     <router-link to="/mp3">Bibliothèque</router-link>
-    <router-link to="/generate">Générer</router-link>
-    <router-link to="/playlists">Playlists</router-link>
+    <!-- <router-link to="/generate">Générer</router-link> -->
+    <!-- <router-link to="/playlists">Playlists</router-link> -->
   </nav>
   <main>
     <router-view />
@@ -14,7 +14,7 @@
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #0f0f1a; color: #749fd7; font-family: system-ui, sans-serif; min-height: 100vh; }
+body { background: #dedee8; color: #000000; font-family: system-ui, sans-serif; min-height: 100vh; }
 </style>
 
 <style scoped>
@@ -23,7 +23,7 @@ body { background: #0f0f1a; color: #749fd7; font-family: system-ui, sans-serif; 
   align-items: center;
   gap: 1.5rem;
   padding: 0.85rem 1.5rem;
-  background: #0d0d41;
+  background: #1c1c1c;
   border-bottom: 1px solid #515188;
   position: sticky;
   top: 0;
