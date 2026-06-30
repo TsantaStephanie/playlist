@@ -305,3 +305,6 @@
 [2026-06-29 10:38:18] [P3] [INFO] Envoi fin : Antanambao.MP3 (succès) — déplacé vers C:\Musique\traites\Antanambao.MP3
 [2026-06-29 10:38:18] [P3] [INFO] Envoi début : IAO.MP3 vers http://localhost:8000/api/mp3
 [2026-06-29 10:38:20] [P3] [INFO] Envoi fin : IAO.MP3 (succès) — déplacé vers C:\Musique\traites\IAO.MP3
+[2026-06-30 17:09:09] [P2] [INFO] P2 en attente sur queue_mp3_paths…
+[2026-06-30 17:09:09] [P1] [INFO] Surveillance démarrée : C:\Musique\entrant
+[2026-06-30 17:09:09] [P3] [INFO] P3 en attente sur queue_mp3_meta…
