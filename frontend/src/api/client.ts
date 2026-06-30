@@ -45,6 +45,7 @@ export const api = {
       request('/api/playlist', { method: 'POST', body: JSON.stringify({ name, criteria, mp3_ids }) }),
     update: (id: number, name: string, mp3_ids: number[]): Promise<Playlist> =>
       request(`/api/playlist/${id}`, { method: 'PUT', body: JSON.stringify({ name, mp3_ids }) }),
+    downloadUrl: (id: number): string => `${BASE}/api/playlist/${id}/download`,
     delete: (id: number): Promise<void> => request(`/api/playlist/${id}`, { method: 'DELETE' }),
   },
 }

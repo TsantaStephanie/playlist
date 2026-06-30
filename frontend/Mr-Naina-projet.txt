@@ -348,5 +348,5 @@ Lit queue_2, envoie les métadonnées vers l'API FastAPI (POST /api/mp3). Si suc
 P4 — Nettoyage (p4_cleaner.py)
 Programme manuel (pas en continu). Scanne C:\Musique\entrant\ et nettoie les fichiers restants (orphelins non traités). Supporte --dry-run pour simuler sans supprimer.
 
-dans programme 3 , le pro doit lire 1 fichier (blacklist) , dans ce fichier le blacklist se divise en 2 (artiste) , les artistes compris dedans donc ne seront jamais 
-générées dans la playlist et ces fichiers y compris seront dans la liste des mp3 à supprimés 
+dans programme 3 , le programme  doit lire 1 fichier (blacklist) , dans ce fichier le blacklist se divise en 2 (artiste,genre) , les artistes et genre  compris dedans donc ne seront jamais 
+générées dans la playlist et n'est jamais inséré dans la base  et le blacklist compris seront dans la liste des mp3 à supprimés 

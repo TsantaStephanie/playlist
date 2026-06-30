@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref } from 'vue'
+import { onMounted, reactive, ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePlaylistStore } from '@/stores/playlist'
 import { api } from '@/api/client'
@@ -16,13 +16,21 @@ const form = reactive({
   year_to: '' as number | '',
 })
 
-// États tri-state par artiste et genre : 'include' | 'exclude' | null
+// 'new' = créer une nouvelle playlist, sinon l'id d'une playlist existante
+const targetPlaylistId = ref<number | 'new'>('new')
+const targetPlaylist = computed(() =>
+  targetPlaylistId.value === 'new'
+    ? null
+    : store.playlists.find(p => p.id === Number(targetPlaylistId.value)) ?? null
+)
+
 const artistStates = ref<Record<string, 'include' | 'exclude'>>({})
 const genreStates = ref<Record<string, 'include' | 'exclude'>>({})
 const availableArtists = ref<string[]>([])
 const availableGenres = ref<string[]>([])
 
 onMounted(async () => {
+  await store.fetchAll()
   availableArtists.value = await api.mp3.artists()
   availableGenres.value = await api.mp3.genres()
   console.log('[PlaylistBuilder] artistes:', availableArtists.value, 'genres:', availableGenres.value)
@@ -62,7 +70,7 @@ async function generate() {
 
   await store.generate({
     duration_minutes: form.duration_minutes,
-    name: form.name || 'Ma playlist',
+    name: targetPlaylist.value?.name ?? form.name ?? 'Ma playlist',
     artists: artists.length ? artists : undefined,
     excluded_artists: excludedArtists.length ? excludedArtists : undefined,
     genres: genres.length ? genres : undefined,
@@ -78,7 +86,17 @@ const saving = ref<string | null>(null)
 async function save(proposal: PlaylistProposal) {
   saving.value = proposal.name
   try {
-    await api.playlist.save(proposal.name, {}, proposal.items.map(mp3 => mp3.id))
+    if (targetPlaylistId.value !== 'new' && targetPlaylist.value) {
+      // Ajouter les nouvelles pistes à la playlist existante
+      const pl = await api.playlist.get(Number(targetPlaylistId.value))
+      const existingIds = pl.items.map(item => item.mp3.id)
+      const newIds = proposal.items.map(mp3 => mp3.id)
+      const mergedIds = [...existingIds, ...newIds.filter(id => !existingIds.includes(id))]
+      await api.playlist.update(Number(targetPlaylistId.value), targetPlaylist.value.name, mergedIds)
+    } else {
+      // Créer une nouvelle playlist
+      await api.playlist.save(form.name || 'Ma playlist', {}, proposal.items.map(mp3 => mp3.id))
+    }
     router.push('/playlists')
   } finally {
     saving.value = null
@@ -96,10 +114,22 @@ async function save(proposal: PlaylistProposal) {
           Durée cible (minutes) <span class="req">*</span>
           <input type="number" v-model.number="form.duration_minutes" min="1" required />
         </label>
+
         <label>
+          Playlist cible
+          <select v-model="targetPlaylistId" class="select-playlist">
+            <option value="new">+ Créer nouveau</option>
+            <option v-for="pl in store.playlists" :key="pl.id" :value="pl.id">
+              {{ pl.name }} ({{ pl.total_tracks }} titres)
+            </option>
+          </select>
+        </label>
+
+        <label v-if="targetPlaylistId === 'new'">
           Nom de la playlist
           <input type="text" v-model="form.name" placeholder="Ma playlist" />
         </label>
+
         <label>
           Langue
           <input type="text" v-model="form.language" placeholder="ex: mg" />
@@ -160,7 +190,7 @@ async function save(proposal: PlaylistProposal) {
           <span class="candidate-name">{{ pl.name }}</span>
           <span class="candidate-meta">{{ pl.total_tracks }} titres · {{ formatTime(pl.total_duration) }}</span>
           <button class="btn-save" @click="save(pl)" :disabled="saving === pl.name">
-            {{ saving === pl.name ? 'Sauvegarde…' : 'Sauvegarder' }}
+            {{ saving === pl.name ? 'Ajout…' : targetPlaylistId !== 'new' ? 'Ajouter à la playlist' : 'Sauvegarder' }}
           </button>
         </div>
         <ul class="track-list">
@@ -185,7 +215,8 @@ h1 { margin-bottom: 1.25rem; font-size: 1.5rem; }
 .row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
 label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.85rem; color: #9ca3af; flex: 1; min-width: 160px; }
 .req { color: #f87171; }
-input[type="text"], input[type="number"] { padding: 0.45rem 0.75rem; border: 1px solid #374151; border-radius: 6px; background: #111827; color: #eee; font-size: 0.9rem; }
+input[type="text"], input[type="number"], .select-playlist { padding: 0.45rem 0.75rem; border: 1px solid #374151; border-radius: 6px; background: #111827; color: #eee; font-size: 0.9rem; }
+.select-playlist { cursor: pointer; }
 .hint { font-size: 0.8rem; color: #6b7280; margin-bottom: 0.75rem; }
 .inc { color: #34d399; font-weight: 600; }
 .exc { color: #f87171; font-weight: 600; }

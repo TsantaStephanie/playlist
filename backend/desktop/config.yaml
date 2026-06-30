@@ -3,6 +3,7 @@ watch:
   interval_seconds: 600        # scan toutes les 10 minutes
   error_directory: "C:/Musique/erreurs"
   processed_directory: "C:/Musique/traites"
+  blacklist_directory: "C:/Musique/a_supprimer"
 
 database:
   host: "localhost"

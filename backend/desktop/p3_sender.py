@@ -21,6 +21,29 @@ def _load_config() -> dict:
         return yaml.safe_load(f)
 
 
+def _load_blacklist() -> dict:
+    bl_path = Path(__file__).parent / "blacklist.yaml"
+    if not bl_path.exists():
+        return {"artists": [], "genres": []}
+    with open(bl_path, encoding="utf-8") as f:
+        data = yaml.safe_load(f) or {}
+    return {
+        "artists": [a.lower() for a in (data.get("artists") or [])],
+        "genres":  [g.lower() for g in (data.get("genres")  or [])],
+    }
+
+
+def _is_blacklisted(metadata: dict, blacklist: dict) -> str | None:
+    """Retourne la raison si blacklisté, None sinon."""
+    artist = (metadata.get("artist") or "").lower()
+    genre  = (metadata.get("genre")  or "").lower()
+    if artist and artist in blacklist["artists"]:
+        return f"artist={metadata['artist']}"
+    if genre and genre in blacklist["genres"]:
+        return f"genre={metadata['genre']}"
+    return None
+
+
 def _send_to_api(metadata: dict, api_url: str, timeout: int, max_retries: int) -> bool:
     for attempt in range(1, max_retries + 1):
         try:
@@ -46,8 +69,23 @@ def _handle(metadata: dict) -> None:
     max_retries = cfg["api"]["max_retries"]
     on_failure = cfg.get("on_send_failure", "keep")
     error_dir = Path(cfg["watch"]["error_directory"])
+    blacklist_dir = Path(cfg["watch"]["blacklist_directory"])
 
     file_path = Path(metadata.get("file_path", ""))
+
+    # Vérification blacklist avant tout envoi
+    blacklist = _load_blacklist()
+    reason = _is_blacklisted(metadata, blacklist)
+    if reason:
+        blacklist_dir.mkdir(parents=True, exist_ok=True)
+        dest_bl = blacklist_dir / file_path.name
+        try:
+            shutil.move(str(file_path), dest_bl)
+        except OSError as exc:
+            log.error(f"Impossible de déplacer {file_path.name} vers blacklist : {exc}")
+        log.info(f"Blacklisté : {file_path.name} ({reason}) — déplacé vers {blacklist_dir}")
+        return
+
     processed_dir = Path(cfg["watch"]["processed_directory"])
     processed_dir.mkdir(parents=True, exist_ok=True)
     dest = processed_dir / file_path.name

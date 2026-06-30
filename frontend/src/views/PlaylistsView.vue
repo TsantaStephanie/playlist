@@ -1,17 +1,29 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { usePlaylistStore } from '@/stores/playlist'
+import { api } from '@/api/client'
 import AudioPlayer from '@/components/AudioPlayer.vue'
 import type { Playlist } from '@/types'
 
 const store = usePlaylistStore()
 const selected = ref<Playlist | null>(null)
+const audioPlayerRef = ref<InstanceType<typeof AudioPlayer> | null>(null)
+const isPlaying = ref(false)
 
 function formatTime(s: number) {
   const m = Math.floor(s / 60)
   const sec = Math.floor(s % 60)
   return `${m}min ${sec}s`
 }
+
+function togglePlayAll() {
+  if (isPlaying.value) audioPlayerRef.value?.pause()
+  else audioPlayerRef.value?.playAll()
+}
+
+watch(selected, () => {
+  isPlaying.value = false
+})
 
 onMounted(() => store.fetchAll())
 </script>
@@ -45,8 +57,18 @@ onMounted(() => store.fetchAll())
         <div class="detail-header">
           <h2>{{ selected.name }}</h2>
           <span class="meta">{{ selected.total_tracks }} titres · {{ formatTime(selected.total_duration) }}</span>
+          <button @click="togglePlayAll" class="btn-play-all">
+            {{ isPlaying ? '⏸ Pause' : '▶ Lire tout' }}
+          </button>
+          <a :href="api.playlist.downloadUrl(selected.id)" download class="btn-download">
+            Télécharger ZIP
+          </a>
         </div>
-        <AudioPlayer :items="selected.items" />
+        <AudioPlayer
+          ref="audioPlayerRef"
+          :items="selected.items"
+          @update:playing="isPlaying = $event"
+        />
       </div>
       <div class="detail empty" v-else>
         <p>Sélectionne une playlist pour l'écouter.</p>
@@ -72,7 +94,11 @@ h1 { margin-bottom: 1.25rem; font-size: 1.5rem; }
 .del:hover { background: #450a0a; }
 .detail { background: #1a1a2e; border-radius: 12px; padding: 1.25rem; }
 .detail.empty { display: flex; align-items: center; justify-content: center; min-height: 200px; color: #6b7280; }
-.detail-header { margin-bottom: 1rem; }
-h2 { font-size: 1.15rem; margin-bottom: 0.2rem; }
-.meta { font-size: 0.85rem; color: #9ca3af; }
+.detail-header { margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+h2 { font-size: 1.15rem; margin: 0; }
+.meta { font-size: 0.85rem; color: #9ca3af; flex: 1; }
+.btn-play-all { background: #7c3aed; color: #fff; border: none; padding: 0.4rem 1.1rem; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+.btn-play-all:hover { background: #6d28d9; }
+.btn-download { background: #1d4ed8; color: #bfdbfe; border: none; padding: 0.35rem 0.9rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; text-decoration: none; }
+.btn-download:hover { background: #2563eb; }
 </style>

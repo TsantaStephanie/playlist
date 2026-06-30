@@ -1,4 +1,9 @@
-from fastapi import APIRouter, Depends
+import io
+import zipfile
+from pathlib import Path
+
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import StreamingResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.schemas.playlist import (
@@ -55,6 +60,36 @@ async def update_playlist(playlist_id: int, body: UpdatePlaylistRequest, db: Asy
     service = PlaylistGeneratorService(db)
     playlist = await service.update(playlist_id, body.name, body.mp3_ids)
     return PlaylistResponse.from_model(playlist)
+
+
+@router.get("/{playlist_id}/download")
+async def download_playlist(playlist_id: int, db: AsyncSession = Depends(get_db)):
+    playlist = await PlaylistGeneratorService(db).get(playlist_id)
+
+    buf = io.BytesIO()
+    missing = []
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        for item in playlist.items:
+            path = Path(item.mp3.file_path)
+            if not path.exists():
+                fallback = Path("C:/Musique/traites") / path.name
+                if fallback.exists():
+                    path = fallback
+                else:
+                    missing.append(path.name)
+                    continue
+            zf.write(path, path.name)
+
+    if missing and buf.tell() == 0:
+        raise HTTPException(status_code=404, detail=f"Aucun fichier trouvé : {', '.join(missing)}")
+
+    buf.seek(0)
+    safe_name = "".join(c if c.isalnum() or c in " -_" else "_" for c in playlist.name)
+    return StreamingResponse(
+        buf,
+        media_type="application/zip",
+        headers={"Content-Disposition": f'attachment; filename="{safe_name}.zip"'},
+    )
 
 
 @router.delete("/{playlist_id}", status_code=204)

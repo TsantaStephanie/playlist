@@ -237,3 +237,71 @@
 [2026-06-24 09:59:59] [P3] [INFO] Envoi fin : Antanambao.MP3 (succès) — déplacé vers C:\Musique\traites\Antanambao.MP3
 [2026-06-24 09:59:59] [P3] [INFO] Envoi début : IAO.MP3 vers http://localhost:8000/api/mp3
 [2026-06-24 10:00:01] [P3] [INFO] Envoi fin : IAO.MP3 (succès) — déplacé vers C:\Musique\traites\IAO.MP3
+[2026-06-24 13:05:04] [P1] [INFO] Surveillance démarrée : C:\Musique\entrant
+[2026-06-24 13:05:04] [P2] [INFO] P2 en attente sur queue_mp3_paths…
+[2026-06-24 13:05:04] [P3] [INFO] P3 en attente sur queue_mp3_meta…
+[2026-06-24 14:48:29] [P2] [INFO] P2 en attente sur queue_mp3_paths…
+[2026-06-24 14:48:29] [P1] [INFO] Surveillance démarrée : C:\Musique\entrant
+[2026-06-24 14:48:29] [P3] [INFO] P3 en attente sur queue_mp3_meta…
+[2026-06-24 15:08:39] [P2] [INFO] P2 en attente sur queue_mp3_paths…
+[2026-06-24 15:08:39] [P1] [INFO] Surveillance démarrée : C:\Musique\entrant
+[2026-06-24 15:08:39] [P3] [INFO] P3 en attente sur queue_mp3_meta…
+[2026-06-27 17:57:01] [P2] [INFO] P2 en attente sur queue_mp3_paths…
+[2026-06-27 17:57:01] [P1] [INFO] Surveillance démarrée : C:\Musique\entrant
+[2026-06-27 17:57:01] [P3] [INFO] P3 en attente sur queue_mp3_meta…
+[2026-06-27 18:25:37] [P2] [INFO] P2 en attente sur queue_mp3_paths…
+[2026-06-27 18:25:37] [P1] [INFO] Surveillance démarrée : C:\Musique\entrant
+[2026-06-27 18:25:38] [P3] [INFO] P3 en attente sur queue_mp3_meta…
+[2026-06-29 10:16:54] [P2] [INFO] P2 en attente sur queue_mp3_paths…
+[2026-06-29 10:16:54] [P1] [INFO] Surveillance démarrée : C:\Musique\entrant
+[2026-06-29 10:16:55] [P3] [INFO] P3 en attente sur queue_mp3_meta…
+[2026-06-29 10:24:42] [P1] [INFO] Détection : C:\Musique\entrant\Ankino.mp3
+[2026-06-29 10:24:42] [P1] [INFO] Publié dans queue_mp3_paths : Ankino.mp3
+[2026-06-29 10:24:42] [P1] [INFO] Détection : C:\Musique\entrant\Antanambao.MP3
+[2026-06-29 10:24:42] [P1] [INFO] Publié dans queue_mp3_paths : Antanambao.MP3
+[2026-06-29 10:24:42] [P1] [INFO] Détection : C:\Musique\entrant\IAO.MP3
+[2026-06-29 10:24:42] [P1] [INFO] Publié dans queue_mp3_paths : IAO.MP3
+[2026-06-29 10:24:42] [P2] [INFO] Extraction début : Ankino.mp3
+[2026-06-29 10:24:42] [P2] [INFO] Extraction fin : Ankino.mp3 (succès)
+[2026-06-29 10:24:42] [P2] [INFO] Extraction début : Antanambao.MP3
+[2026-06-29 10:24:42] [P2] [INFO] Extraction fin : Antanambao.MP3 (succès)
+[2026-06-29 10:24:43] [P2] [INFO] Extraction début : IAO.MP3
+[2026-06-29 10:24:43] [P2] [INFO] Extraction fin : IAO.MP3 (succès)
+[2026-06-29 10:24:44] [P3] [INFO] Envoi début : Ankino.mp3 vers http://localhost:8000/api/mp3
+[2026-06-29 10:24:46] [P3] [INFO] Envoi fin : Ankino.mp3 (succès) — déplacé vers C:\Musique\traites\Ankino.mp3
+[2026-06-29 10:24:46] [P3] [INFO] Blacklisté : Antanambao.MP3 (artist=Bekoto Augustin) — déplacé vers C:\Musique\a_supprimer
+[2026-06-29 10:24:46] [P3] [INFO] Blacklisté : IAO.MP3 (genre=salegy) — déplacé vers C:\Musique\a_supprimer
+[2026-06-29 10:26:48] [P1] [INFO] Détection : C:\Musique\entrant\Ankino.mp3
+[2026-06-29 10:26:48] [P1] [INFO] Publié dans queue_mp3_paths : Ankino.mp3
+[2026-06-29 10:26:48] [P1] [INFO] Détection : C:\Musique\entrant\Antanambao.MP3
+[2026-06-29 10:26:48] [P1] [INFO] Publié dans queue_mp3_paths : Antanambao.MP3
+[2026-06-29 10:26:48] [P1] [INFO] Détection : C:\Musique\entrant\IAO.MP3
+[2026-06-29 10:26:48] [P1] [INFO] Publié dans queue_mp3_paths : IAO.MP3
+[2026-06-29 10:26:49] [P2] [INFO] Extraction début : Ankino.mp3
+[2026-06-29 10:26:49] [P2] [INFO] Extraction fin : Ankino.mp3 (succès)
+[2026-06-29 10:26:49] [P2] [INFO] Extraction début : Antanambao.MP3
+[2026-06-29 10:26:49] [P2] [INFO] Extraction fin : Antanambao.MP3 (succès)
+[2026-06-29 10:26:49] [P2] [INFO] Extraction début : IAO.MP3
+[2026-06-29 10:26:50] [P2] [INFO] Extraction fin : IAO.MP3 (succès)
+[2026-06-29 10:26:50] [P3] [INFO] Envoi début : Ankino.mp3 vers http://localhost:8000/api/mp3
+[2026-06-29 10:26:53] [P3] [INFO] Envoi fin : Ankino.mp3 (succès) — déplacé vers C:\Musique\traites\Ankino.mp3
+[2026-06-29 10:26:53] [P3] [INFO] Blacklisté : Antanambao.MP3 (artist=Bekoto Augustin) — déplacé vers C:\Musique\a_supprimer
+[2026-06-29 10:26:53] [P3] [INFO] Blacklisté : IAO.MP3 (genre=salegy) — déplacé vers C:\Musique\a_supprimer
+[2026-06-29 10:38:11] [P1] [INFO] Détection : C:\Musique\entrant\Ankino.mp3
+[2026-06-29 10:38:11] [P1] [INFO] Publié dans queue_mp3_paths : Ankino.mp3
+[2026-06-29 10:38:11] [P1] [INFO] Détection : C:\Musique\entrant\Antanambao.MP3
+[2026-06-29 10:38:12] [P1] [INFO] Publié dans queue_mp3_paths : Antanambao.MP3
+[2026-06-29 10:38:12] [P1] [INFO] Détection : C:\Musique\entrant\IAO.MP3
+[2026-06-29 10:38:12] [P1] [INFO] Publié dans queue_mp3_paths : IAO.MP3
+[2026-06-29 10:38:12] [P2] [INFO] Extraction début : Ankino.mp3
+[2026-06-29 10:38:13] [P2] [INFO] Extraction fin : Ankino.mp3 (succès)
+[2026-06-29 10:38:13] [P2] [INFO] Extraction début : Antanambao.MP3
+[2026-06-29 10:38:13] [P2] [INFO] Extraction fin : Antanambao.MP3 (succès)
+[2026-06-29 10:38:13] [P2] [INFO] Extraction début : IAO.MP3
+[2026-06-29 10:38:13] [P2] [INFO] Extraction fin : IAO.MP3 (succès)
+[2026-06-29 10:38:13] [P3] [INFO] Envoi début : Ankino.mp3 vers http://localhost:8000/api/mp3
+[2026-06-29 10:38:15] [P3] [INFO] Envoi fin : Ankino.mp3 (succès) — déplacé vers C:\Musique\traites\Ankino.mp3
+[2026-06-29 10:38:15] [P3] [INFO] Envoi début : Antanambao.MP3 vers http://localhost:8000/api/mp3
+[2026-06-29 10:38:18] [P3] [INFO] Envoi fin : Antanambao.MP3 (succès) — déplacé vers C:\Musique\traites\Antanambao.MP3
+[2026-06-29 10:38:18] [P3] [INFO] Envoi début : IAO.MP3 vers http://localhost:8000/api/mp3
+[2026-06-29 10:38:20] [P3] [INFO] Envoi fin : IAO.MP3 (succès) — déplacé vers C:\Musique\traites\IAO.MP3

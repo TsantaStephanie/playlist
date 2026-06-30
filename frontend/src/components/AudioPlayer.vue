@@ -36,9 +36,22 @@ function next() {
   if (currentIndex.value < props.items.length - 1) currentIndex.value++
 }
 
+function playAll() {
+  currentIndex.value = 0
+  setTimeout(() => audioRef.value?.play(), 50)
+}
+
+function pause() {
+  audioRef.value?.pause()
+}
+
 watch(currentIndex, () => {
   setTimeout(() => audioRef.value?.play(), 50)
 })
+
+const emit = defineEmits<{ 'update:playing': [boolean] }>()
+
+defineExpose({ playAll, pause, togglePlay })
 </script>
 
 <template>
@@ -46,8 +59,8 @@ watch(currentIndex, () => {
     <audio
       ref="audioRef"
       :src="api.mp3.streamUrl(current().mp3.id)"
-      @play="playing = true"
-      @pause="playing = false"
+      @play="playing = true; emit('update:playing', true)"
+      @pause="playing = false; emit('update:playing', false)"
       @ended="next"
       controls
       class="audio-elem"
