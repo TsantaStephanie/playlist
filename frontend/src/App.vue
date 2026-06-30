@@ -2,7 +2,7 @@
 
 <template>
   <nav class="navbar">
-    <span class="brand">🎵 Mr Naina</span>
+    <span class="brand">🎵 Music & Download</span>
     <router-link to="/mp3">Bibliothèque</router-link>
     <router-link to="/generate">Générer</router-link>
     <router-link to="/playlists">Playlists</router-link>
